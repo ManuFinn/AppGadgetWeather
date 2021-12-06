@@ -83,9 +83,34 @@ namespace AppGidget.ViewModels
             catch (Exception ex) when (ex is IOException) { Mensaje = ex.ToString(); }
         }
 
-        private void Update(object obj)
+        private async void Update(object obj)
         {
-            throw new NotImplementedException();
+             Uri uri;
+
+            try
+            {
+                if(Uri.TryCreate(url, UriKind.Absolute, out uri))
+                {
+
+                    HttpClient client = new HttpClient();
+                    HttpResponseMessage response = await client.GetAsync(url);
+
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var json = await response.Content.ReadAsStringAsync();
+                        var clima = JsonConvert.DeserializeObject<ClimaClase>(json);
+
+                        if(clima != null) {
+                            ClimaActual = clima;
+                            Climas.Add(ClimaActual);
+                        }
+
+                    }
+                }
+                Mensaje = "La URL especificada es incorrecta";
+            }
+            catch (Exception ex) when (ex is Exception) { Mensaje = ex.ToString(); }
+            catch (Exception ex) when (ex is IOException) { Mensaje = ex.ToString(); }
         }
 
     }
