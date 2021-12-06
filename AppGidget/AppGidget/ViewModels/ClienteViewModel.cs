@@ -38,11 +38,11 @@ namespace AppGidget.ViewModels
 
         public string mensaje { get; set; }
 
-        public ICommand ActualizarClima { get; set; }
+        public ICommand ActualizarClimaCommand { get; set; }
 
         public ClienteViewModel()
         {
-            ActualizarClima = new Command(Update);
+            ActualizarClimaCommand = new Command(Update);
         }
 
         private void Update(object obj)
