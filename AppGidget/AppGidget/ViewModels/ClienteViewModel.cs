@@ -36,6 +36,7 @@ namespace AppGidget.ViewModels
         public DateTime Timex { get { return time; } set { time = value; } }
         public bool IsDay { get { return isday; } set { isday = value; } }
 
+        public string mensaje { get; set; }
 
         public ICommand ActualizarClima { get; set; }
 
