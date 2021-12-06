@@ -13,22 +13,22 @@
             <StackLayout Margin="15" >
                 <Button Command="{Binding ActualizarClima}" Text="Actualizar"/>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding ClimaActual.Main}"/>
-                    <Label Text="{Binding ClimaActual.Description}"/>
-                    <Label Text="{Binding ClimaActual.Temperature}"/>
-                    <Label Text="{Binding ClimaActual.Date}"/>
-                    <Label Text="{Binding ClimaActual.Time}"/>
+                    <Label Text="{Binding ClimaActual.Clima.Main}"/>
+                    <Label Text="{Binding ClimaActual.Clima.Description}"/>
+                    <Label Text="{Binding ClimaActual.Clima.Temperature}"/>
+                    <Label Text="{Binding ClimaActual.Tiempo.Date}"/>
+                    <Label Text="{Binding ClimaActual.Tiempo.Time}"/>
                 </StackLayout>
                 <ListView ItemsSource="{Binding Climas}" SelectedItem="{Binding ClimaActual}" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Main}"/>
-                                    <Label Text="{Binding Description}"/>
-                                    <Label Text="{Binding Temperature}"/>
-                                    <Label Text="{Binding Date}"/>
-                                    <Label Text="{Binding Time}"/>
+                                    <Label Text="{Binding Clima.Main}"/>
+                                    <Label Text="{Binding Clima.Description}"/>
+                                    <Label Text="{Binding Clima.Temperature}"/>
+                                    <Label Text="{Binding Tiempo.Date}"/>
+                                    <Label Text="{Binding Tiempo.Time}"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
