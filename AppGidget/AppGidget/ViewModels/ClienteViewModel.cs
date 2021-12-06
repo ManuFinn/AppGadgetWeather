@@ -32,12 +32,12 @@ namespace AppGidget.ViewModels
         // "datetime":{"date":"2021-12-06","time":"3:37 PM","isday":true}}
 
         private string url = "http://192.168.1.72/info";
-        private ClimaClase clima = new ClimaClase();
+        private ClimaClase clima_actual = new ClimaClase();
         private string mensaje = "";
 
         public string Url { get => url; set { url = value; NotifyPropertyChanged(); } }
 
-        public ClimaClase Clima {get => clima; set { clima = value; NotifyPropertyChanged(); }}
+        public ClimaClase ClimaActual {get => clima_actual; set { clima_actual = value; NotifyPropertyChanged(); }}
 
 
         public string Mensaje { get => mensaje; set { mensaje = value; NotifyPropertyChanged(); } }
@@ -68,9 +68,12 @@ namespace AppGidget.ViewModels
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         var json = await response.Content.ReadAsStringAsync();
-                        var clima = JsonConvert.DeserializeObject<List<ClimaClase>>(json);
+                        var clima = JsonConvert.DeserializeObject<ClimaClase>(json);
 
-                        Climas = clima;
+                        if(clima != null) {
+                            ClimaActual = clima;
+                            Climas.Add(ClimaActual);
+                        }
 
                     }
                 }
