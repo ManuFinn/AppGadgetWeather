@@ -16,7 +16,7 @@
                            HorizontalTextAlignment="Center"
                            TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" 
                            Background="{AppThemeBinding Light=#FFFFFF, Dark=#696969}"/>
-                <Entry Text="{Binding Url }" 
+                <Entry Text="{Binding url}" 
                            HorizontalTextAlignment="Center"
                            TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}"
                            Margin="0, 20, 0, 0"/>
