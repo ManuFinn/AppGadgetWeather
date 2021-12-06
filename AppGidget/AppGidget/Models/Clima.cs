@@ -1,24 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 using Newtonsoft.Json;
 
-namespace AppGidget.Models
-{
-    public class ClimaClase : INotifyPropertyChanged
-    {
-        
-        // {"weather":{"main":"clouds","description":"broken clouds","temperature":18.19},
-        // "datetime":{"date":"2021-12-06","time":"3:37 PM","isday":true}}
+namespace AppGidget.Models {
+
+    public class Clima : INotifyPropertyChanged {
 
         private string main;
         private string description;
         private float temperature;
-        private DateTime date;
-        private DateTime time;
-        private bool isday;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -35,14 +26,6 @@ namespace AppGidget.Models
         [JsonProperty("temperature")]
         public float Temperature { get => temperature; set { temperature = value; NotifyPropertyChanged(); } }
 
-        [JsonProperty("date")]
-        public DateTime Date { get => date; set { date = value; NotifyPropertyChanged(); } }
+    }   
 
-        [JsonProperty("time")]
-        public DateTime Time { get => time; set { time = value; NotifyPropertyChanged(); } }
-
-        [JsonProperty("isday")]
-        public bool IsDay { get => isday; set { isday = value; NotifyPropertyChanged(); } }
-
-    }
 }

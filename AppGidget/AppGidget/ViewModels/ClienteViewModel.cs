@@ -19,8 +19,8 @@ namespace AppGidget.ViewModels
     public class ClienteViewModel : INotifyPropertyChanged
     {
 
-        public List<ClimaClase> Climas { get; set; } =
-            new List<ClimaClase>();
+        public List<ClimaTiempo> Climas { get; set; } =
+            new List<ClimaTiempo>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -32,12 +32,12 @@ namespace AppGidget.ViewModels
         // "datetime":{"date":"2021-12-06","time":"3:37 PM","isday":true}}
 
         private string url = "http://192.168.1.72/info";
-        private ClimaClase clima_actual = new ClimaClase();
+        private ClimaTiempo clima_actual = new ClimaTiempo();
         private string mensaje = "";
 
         public string Url { get => url; set { url = value; NotifyPropertyChanged(); } }
 
-        public ClimaClase ClimaActual {get => clima_actual; set { clima_actual = value; NotifyPropertyChanged(); }}
+        public ClimaTiempo ClimaActual {get => clima_actual; set { clima_actual = value; NotifyPropertyChanged(); }}
 
 
         public string Mensaje { get => mensaje; set { mensaje = value; NotifyPropertyChanged(); } }
@@ -68,7 +68,7 @@ namespace AppGidget.ViewModels
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         var json = await response.Content.ReadAsStringAsync();
-                        var clima = JsonConvert.DeserializeObject<ClimaClase>(json);
+                        var clima = JsonConvert.DeserializeObject<ClimaTiempo>(json);
 
                         if(clima != null) {
                             ClimaActual = clima;
@@ -98,7 +98,7 @@ namespace AppGidget.ViewModels
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         var json = await response.Content.ReadAsStringAsync();
-                        var clima = JsonConvert.DeserializeObject<ClimaClase>(json);
+                        var clima = JsonConvert.DeserializeObject<ClimaTiempo>(json);
 
                         if(clima != null) {
                             ClimaActual = clima;
