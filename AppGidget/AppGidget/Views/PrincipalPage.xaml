@@ -8,31 +8,26 @@
     <ContentPage.BindingContext>
         <vm:ClienteViewModel/>
     </ContentPage.BindingContext>
-    <Frame CornerRadius="30" Background="{AppThemeBinding Light=#FFFFFF, Dark=#696969}" Margin="75, 275">
+    <Frame CornerRadius="30" Background="{AppThemeBinding Light=#FFFFFF, Dark=#696969}" Margin="20, 20">
         <Grid>
             <StackLayout Margin="15" >
                 <Button Command="{Binding ActualizarClima}" Text="Actualizar"/>
-                <Label FontSize="35" Text="{Binding Mainx}" 
-                           HorizontalTextAlignment="Center"
-                           TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" 
-                           Background="{AppThemeBinding Light=#FFFFFF, Dark=#696969}"/>
-                <Label FontSize="35" Text="{Binding Descriptionx}" 
-                           HorizontalTextAlignment="Center"
-                           TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" 
-                           Background="{AppThemeBinding Light=#FFFFFF, Dark=#696969}"/>
-                <Label FontSize="35" Text="{Binding Temperaturex}" 
-                           HorizontalTextAlignment="Center"
-                           TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" 
-                           Background="{AppThemeBinding Light=#FFFFFF, Dark=#696969}"/>
-                <Label FontSize="35" Text="{Binding Datex}" 
-                           HorizontalTextAlignment="Center"
-                           TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" 
-                           Background="{AppThemeBinding Light=#FFFFFF, Dark=#696969}"/>
-                <Label FontSize="35" Text="{Binding Timex}" 
-                           HorizontalTextAlignment="Center"
-                           TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" 
-                           Background="{AppThemeBinding Light=#FFFFFF, Dark=#696969}"/>
-                <Label FontSize="35" Text="{Binding mensaje}" 
+                <ListView ItemsSource="{Binding Climas}" SelectedItem="{Binding ClimaActual}" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Main}"/>
+                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding Temperature}"/>
+                                    <Label Text="{Binding Date}"/>
+                                    <Label Text="{Binding Time"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Label FontSize="35" Text="{Binding Mensaje}" 
                            HorizontalTextAlignment="Center"
                            TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" 
                            Background="{AppThemeBinding Light=#FFFFFF, Dark=#696969}"/>
