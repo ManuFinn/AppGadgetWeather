@@ -23,8 +23,14 @@ namespace AppGidget.ViewModels
 
         public ICommand ActualizarClima { get; set; }
 
+        public ClienteViewModel()
+        {
+            ActualizarClima = new Command(Update);
+        }
 
-
-
+        private void Update(object obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
