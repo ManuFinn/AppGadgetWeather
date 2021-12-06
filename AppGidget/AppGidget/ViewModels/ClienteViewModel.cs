@@ -18,8 +18,19 @@ namespace AppGidget.ViewModels
     {
         public string url { get; set; } = "http://192.168.1.72/info";
 
+        public List<ClimaClase> Climas { get; set; } =
+            new List<ClimaClase>();
 
+        public ICommand ActualizarClima { get; set; }
 
+        public ClienteViewModel()
+        {
+            ActualizarClima = new Command(Update);
+        }
 
+        private void Update(object obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
