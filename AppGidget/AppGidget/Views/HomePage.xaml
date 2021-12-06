@@ -16,7 +16,7 @@
                            HorizontalTextAlignment="Center"
                            TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" 
                            Background="{AppThemeBinding Light=#FFFFFF, Dark=#696969}"/>
-                <Entry Text="{Binding Url }" 
+                <Entry Text="{Binding url}" 
                            HorizontalTextAlignment="Center"
                            TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}"
                            Margin="0, 20, 0, 0"/>
@@ -31,7 +31,7 @@
                         Command="{Binding ConectarCommand}" 
                         Background="{AppThemeBinding Light=#dbdbdb, Dark=#353535}"
                         TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}"/>
-                <Label Text="{Binding Mensaje}" FontSize="20" FontAttributes="Bold"
+                <Label Text="{Binding mensaje}" FontSize="20" FontAttributes="Bold"
                        TextColor="#ff3030" 
                        HorizontalTextAlignment="Center"
                        VerticalTextAlignment="End"
