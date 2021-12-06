@@ -28,7 +28,5 @@ namespace AppGidget.Models
         [JsonProperty("isday")]
         public bool isday { get; set; }
 
-
-
     }
 }
