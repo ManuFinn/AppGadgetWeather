@@ -11,10 +11,11 @@ using System.IO;
 using System.Threading;
 using System.ComponentModel;
 using AppGidget.Models;
+using AppGidget.Views;
 
 namespace AppGidget.ViewModels
 {
-    public class ClienteViewModel
+    public class ClienteViewModel : INotifyPropertyChanged
     {
         public string url { get; set; } = "http://192.168.1.72/info";
 
@@ -38,11 +39,45 @@ namespace AppGidget.ViewModels
 
         public string mensaje { get; set; }
 
+        public ICommand ConectarCommand { get; set; }
         public ICommand ActualizarClimaCommand { get; set; }
 
         public ClienteViewModel()
         {
+            ConectarCommand = new Command(Connect);
             ActualizarClimaCommand = new Command(Update);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private async void Connect()
+        {
+            Uri uri;
+
+            try
+            {
+                if(Uri.TryCreate(url, UriKind.Absolute, out uri))
+                {
+                    PrincipalPage page = new PrincipalPage() { BindingContext = this };
+                    await App.Current.MainPage.Navigation.PushAsync(page);
+
+                    HttpClient client = new HttpClient();
+                    HttpResponseMessage response = await client.GetAsync(url);
+
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var json = await response.Content.ReadAsStringAsync();
+                        var clima = JsonConvert.DeserializeObject<List<ClimaClase>>(json);
+
+                        Climas = clima;
+
+                    }
+                }
+                mensaje = "La URL especificada es incorrecta";
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(mensaje)));
+            }
+            catch (Exception ex) when (ex is Exception) { mensaje = ex.ToString(); }
+            catch (Exception ex) when (ex is IOException) { mensaje = ex.ToString(); }
         }
 
         private void Update(object obj)
