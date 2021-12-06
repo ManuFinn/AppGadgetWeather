@@ -16,6 +16,10 @@ namespace AppGidget.ViewModels
 {
     public class ClienteViewModel
     {
+        public string url { get; set; } = "http://192.168.1.72/info";
+
+
+
 
     }
 }
