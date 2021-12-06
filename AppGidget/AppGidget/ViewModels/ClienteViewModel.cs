@@ -11,11 +11,8 @@ using System.IO;
 using System.Threading;
 using System.ComponentModel;
 using AppGidget.Models;
-<<<<<<< HEAD
 using System.Runtime.CompilerServices;
-=======
 using AppGidget.Views;
->>>>>>> 71da53d3c54963b605db8f2ac6c5c45195a49805
 
 namespace AppGidget.ViewModels
 {
@@ -42,22 +39,17 @@ namespace AppGidget.ViewModels
 
         public ClimaClase Clima {get => clima; set { clima = value; NotifyPropertyChanged(); }}
 
-<<<<<<< HEAD
+
         public string Mensaje { get => mensaje; set { mensaje = value; NotifyPropertyChanged(); } }
 
-        public ICommand ActualizarClima { get; }
-=======
         public ICommand ConectarCommand { get; set; }
         public ICommand ActualizarClimaCommand { get; set; }
->>>>>>> 71da53d3c54963b605db8f2ac6c5c45195a49805
 
         public ClienteViewModel()
         {
             ConectarCommand = new Command(Connect);
             ActualizarClimaCommand = new Command(Update);
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private async void Connect()
         {
@@ -82,11 +74,10 @@ namespace AppGidget.ViewModels
 
                     }
                 }
-                mensaje = "La URL especificada es incorrecta";
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(mensaje)));
+                Mensaje = "La URL especificada es incorrecta";
             }
-            catch (Exception ex) when (ex is Exception) { mensaje = ex.ToString(); }
-            catch (Exception ex) when (ex is IOException) { mensaje = ex.ToString(); }
+            catch (Exception ex) when (ex is Exception) { Mensaje = ex.ToString(); }
+            catch (Exception ex) when (ex is IOException) { Mensaje = ex.ToString(); }
         }
 
         private void Update(object obj)
