@@ -57,6 +57,7 @@ namespace AppGidget.ViewModels
 
             try
             {
+                Mensaje = "";
                 if(Uri.TryCreate(url, UriKind.Absolute, out uri))
                 {
                     PrincipalPage page = new PrincipalPage() { BindingContext = this };
@@ -77,7 +78,9 @@ namespace AppGidget.ViewModels
 
                     }
                 }
-                Mensaje = "La URL especificada es incorrecta";
+                else {
+                    Mensaje = "La URL especificada es incorrecta";
+                }
             }
             catch (Exception ex) when (ex is Exception) { Mensaje = ex.ToString(); }
             catch (Exception ex) when (ex is IOException) { Mensaje = ex.ToString(); }
@@ -89,6 +92,7 @@ namespace AppGidget.ViewModels
 
             try
             {
+                Mensaje = "";
                 if(Uri.TryCreate(url, UriKind.Absolute, out uri))
                 {
 
@@ -107,7 +111,9 @@ namespace AppGidget.ViewModels
 
                     }
                 }
-                Mensaje = "La URL especificada es incorrecta";
+                else {
+                    Mensaje = "La URL especificada es incorrecta";
+                }
             }
             catch (Exception ex) when (ex is Exception) { Mensaje = ex.ToString(); }
             catch (Exception ex) when (ex is IOException) { Mensaje = ex.ToString(); }
